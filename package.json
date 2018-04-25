@@ -1,0 +1,27 @@
+{
+  "name": "comparison-object-diff",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/WhiteMinds/comparison-object-diff.git"
+  },
+  "keywords": [
+    "diff",
+    "difference",
+    "compare",
+    "comparison",
+    "deep",
+    "object"
+  ],
+  "author": "WhiteMind",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/WhiteMinds/comparison-object-diff/issues"
+  },
+  "homepage": "https://github.com/WhiteMinds/comparison-object-diff#readme"
+}
