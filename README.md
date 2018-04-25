@@ -6,10 +6,10 @@ Depth compares object differences, generates discrepancy results, and allows upd
 `npm i --save comparison-object-diff`
 
 ## Functions available 可用函数: 
- - [`comparisonObject(objOld, objNew)`](#comparisonObject)
+ - [`comparisonObject(objOld, objNew)`](#comparisonobject)
  returns the difference of the last object and new objects. 返回旧对象和新对象之间的差异
 
- - [`updateObjectFromDiff(objOld, diff)`](#updateObjectFromDiff)
+ - [`updateObjectFromDiff(objOld, diff)`](#updateobjectfromdiff)
  use difference objects to update old objects. 使用差异对象更新旧对象.
  
  
