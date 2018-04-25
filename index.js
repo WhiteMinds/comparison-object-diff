@@ -1,8 +1,8 @@
-function comparisonObject (objLast, objNew) {
+function comparisonObject (objOld, objNew) {
   var change = {}, add = {}, del = {}, k;
 
-  for (k in objLast) {
-    if (!objLast.hasOwnProperty(k))
+  for (k in objOld) {
+    if (!objOld.hasOwnProperty(k))
       continue;
 
     if (!objNew.hasOwnProperty(k)) { // deleted
@@ -10,15 +10,15 @@ function comparisonObject (objLast, objNew) {
       continue;
     }
 
-    if (typeof objLast[k] === 'object' && typeof objNew[k] === 'object') { // deep
-      var ret = comparisonObject(objLast[k], objNew[k]);
+    if (typeof objOld[k] === 'object' && typeof objNew[k] === 'object') { // deep
+      var ret = comparisonObject(objOld[k], objNew[k]);
       if (Object.keys(ret.change).length > 0) change[k] = ret.change;
       if (Object.keys(ret.add).length > 0) add[k] = ret.add;
       if (Object.keys(ret.del).length > 0) del[k] = ret.del;
       continue;
     }
 
-    if (objLast[k] !== objNew[k]) { // changed
+    if (objOld[k] !== objNew[k]) { // changed
       change[k] = objNew[k];
     }
   }
@@ -27,7 +27,7 @@ function comparisonObject (objLast, objNew) {
     if (!objNew.hasOwnProperty(k))
       continue;
 
-    if (!objLast.hasOwnProperty(k)) { // added
+    if (!objOld.hasOwnProperty(k)) { // added
       add[k] = objNew[k];
     }
   }
@@ -35,10 +35,10 @@ function comparisonObject (objLast, objNew) {
   return { change: change, add: add, del: del };
 }
 
-function updateObjectFromDiff(objLast, diff) {
-  mergeChange(objLast, diff.change);
-  mergeAdd(objLast, diff.add);
-  mergeDel(objLast, diff.del);
+function updateObjectFromDiff(objOld, diff) {
+  mergeChange(objOld, diff.change);
+  mergeAdd(objOld, diff.add);
+  mergeDel(objOld, diff.del);
 
   function mergeChange (obj, diff) {
     for (var k in diff) {
@@ -81,6 +81,8 @@ function updateObjectFromDiff(objLast, diff) {
       delete obj[k]; // update delete
     }
   }
+  
+  return objOld;
 }
 
 module.exports.comparisonObject = comparisonObject;
